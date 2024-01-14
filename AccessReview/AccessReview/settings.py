@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'AccessReview.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'AR',
+        'NAME': 'AccessReview',
         'USER': 'admin',
         'PASSWORD': 'losalamos',
         'HOST': 'localhost',

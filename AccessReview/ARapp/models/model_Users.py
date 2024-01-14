@@ -7,8 +7,8 @@ from .model_UserStatusType import UserStatus, UserType
 class Users(models.Model):
     employee_ID = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
-    #userStatus = models.ForeignKey('UserStatus', on_delete=models.PROTECT)
-    #userType = models.ForeignKey('UserType', on_delete=models.PROTECT)
+    userStatus = models.ForeignKey('UserStatus', on_delete=models.PROTECT)
+    userType = models.ForeignKey('UserType', on_delete=models.PROTECT)
 #    middleName = models.CharField(max_length=255, blank=True)
 #    surName = models.CharField(max_length=255)
 #    mail = models.CharField(max_length=255)
