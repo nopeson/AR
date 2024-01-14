@@ -1,0 +1,29 @@
+{% block title %}
+    Home
+{% endblock %}
+{% block content %}
+    <h2>User list</h2>
+
+    {% if user_list %}
+        <table class="message_list">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in user_list %}
+                <tr>
+                    <td>{{ user.employee_ID }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.userStatus }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No users have been logged.</p>
+    {% endif %}
+{% endblock %}
