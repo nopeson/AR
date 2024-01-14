@@ -11,6 +11,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>status</th>
+                <th>user type</th>
             </tr>
             </thead>
             <tbody>
@@ -18,7 +19,8 @@
                 <tr>
                     <td>{{ user.employee_ID }}</td>
                     <td>{{ user.name }}</td>
-                    <td>{{ user.userStatus }}</td>
+                    <td>{{ user.userStatus.status }}</td>
+                    <td>{{ user.userStatus.userType }}</td>
                 </tr>
             {% endfor %}
             </tbody>
