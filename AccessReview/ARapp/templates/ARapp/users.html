@@ -1,7 +1,11 @@
+{% extends "ARapp/layout.html" %}
+
 {% block title %}
-    Home
-{% endblock %}
-{% block content %}
+    <h2> Users </h2>
+{% endblock title %}
+
+
+{% block body_content%}
     <h2>User list</h2>
 
     {% if user_list %}
@@ -28,4 +32,65 @@
     {% else %}
         <p>No users have been logged.</p>
     {% endif %}
+
+{% endblock body_content%}
+
+{% comment %} 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+
+    <div class="container">
+        <ul class="nav bg-info">
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/ARapp">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/ARapp/users">users</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link link-light" href="/ARapp/about">about</a>
+            </li>
+        </ul>
+    </div>
+
+
+{% block content2 %}
+<h2>User list</h2>
+
+{% if user_list %}
+    <table class="message_list">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>status</th>
+            <th>user type</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in user_list %}
+            <tr>
+                <td>{{ user.employee_ID }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.userStatus.status }}</td>
+                <td>{{ user.userType.userType }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No users have been logged.</p>
+{% endif %}
 {% endblock %}
+
+
+
+</body>
+</html> {% endcomment %}

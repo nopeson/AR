@@ -12,6 +12,10 @@ from .models import Users
 def index(request):
     return render(request, "ARapp/index.html")
 
+def about(request):
+    return render(request, "ARapp/about.html")
+
+
 
 class IndexView(generic.ListView):
     template_name = "ARapp/users.html"

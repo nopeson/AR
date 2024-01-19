@@ -1,3 +1,46 @@
+{% extends "ARapp/layout.html" %}
+
 {% block title %}
-    Hello
-{% endblock %}
+<h2> INDEX </h2>
+{% endblock title %}
+
+
+{% block body_content%}
+<h2> INDEX </h2>
+{% endblock body_content%}
+
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+</head>
+<body>
+
+    <div class="container">
+        <ul class="nav bg-info">
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/ARapp">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="/ARapp/users">users</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link link-light" href="/ARapp/about">about</a>
+            </li>
+        </ul>
+
+    </div>
+
+    <h2> INDEX </h2>
+
+</body>
+</html> {% endcomment %}
