@@ -4,7 +4,7 @@ import datetime
 class Systems(models.Model):
     systemName = models.CharField(max_length=255)
     criticality = models.CharField(max_length=255)
-
+    country = models.CharField(max_length=255)
 
 #Table Systems{
 #  id integer [primary key]
