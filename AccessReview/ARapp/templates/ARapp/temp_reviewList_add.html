@@ -1,0 +1,17 @@
+{% extends "ARapp/layout.html" %}
+{% load django_tables2 %}
+
+
+{% block title %}
+    Temp Review List ADD
+{% endblock title %}
+
+
+{% block body_content%}
+    <form action="{% url 'ARapp:submit_reviewListAdd'%}" method="post">
+        {% csrf_token%}
+        {{ add_new_review_form }}
+        <input type="submit" value="Submit"> 
+    </form> 
+
+{% endblock body_content%}

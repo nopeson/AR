@@ -1,0 +1,17 @@
+{% extends "ARapp/layout.html" %}
+{% load django_tables2 %}
+
+
+{% block title %}
+    Review List 
+{% endblock title %}
+
+
+{% block body_content%}
+    {% if reviewListList %}
+            {% render_table reviewListList %}
+    {% else %}
+        <p>No review lists have been logged.</p>
+    {% endif %}
+
+{% endblock body_content%}

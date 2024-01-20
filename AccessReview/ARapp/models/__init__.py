@@ -10,3 +10,8 @@ from .model_R_ReviewType import R_ReviewType
 from .model_Users import UsersTable
 from .model_Systems import SystemsTable
 from .model_Countries import CountryTable
+from .model_R_ReviewList import ReviewListTable
+
+
+#FORMS import
+from .model_R_ReviewList import ReviewListForm
