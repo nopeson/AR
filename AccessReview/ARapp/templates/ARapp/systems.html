@@ -1,0 +1,44 @@
+{% extends "ARapp/layout.html" %}
+{% load django_tables2 %}
+
+
+{% block title %}
+    <h2> Systems </h2>
+{% endblock title %}
+
+
+{% block body_content%}
+    {% if all_systems %}
+            {% render_table table %}
+    {% else %}
+        <p>No systems have been logged.</p>
+    {% endif %}
+
+
+    {% comment %} <h2>System list</h2>
+
+    {% if all_systems %}
+        <table class="system_list">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>crit</th>
+                <th>country</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for system in all_systems %}
+                <tr>
+                    <td>{{ system.systemName }}</td>
+                    <td>{{ system.criticality }}</td>
+                    <td>{{ system.country.countryName }}</td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No systems have been logged.</p>
+    {% endif %} {% endcomment %}
+
+{% endblock body_content%}

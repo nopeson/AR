@@ -1,0 +1,57 @@
+{% extends "ARapp/layout.html" %}
+{% load django_tables2 %}
+
+
+{% block title %}
+    System's detail
+{% endblock title %}
+
+
+{% block body_content%}
+<h2> System Name :  {{system.systemName}} </h2>  <br />
+<br />
+
+{{system.systemDescription}}
+
+<br />
+<br />
+{% comment %} {% render_table system.country.all %} {% endcomment %}
+{% if system.country.all %}
+        <table class="country_list">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>isLive</th>
+                <th>Continue</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for country in system.country.all %}
+                <tr>
+                    <td>{{ country.id }}</td>
+                    <td>{{ country.countryName }}</td>
+                    <td>{{ country.isLive }}</td>
+                    <td>
+                        <form action="{% url 'ARapp:temp_rev' %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Select" />
+                            {% comment %} <a href="{% url 'ARapp:temp_rev' %}">Select</a> {% endcomment %}
+                            <input type="hidden" name="countryID" value={{ country.id }}>
+                            <input type="hidden" name="systemID" value={{ system.id }}>
+                        </form>
+                    
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No systems have been logged.</p>
+    {% endif %}
+<br />
+
+<a href="{% url 'ARapp:systems' %}">back to systems</a>
+
+{% endblock body_content%}

@@ -15,13 +15,18 @@
         <div class="container">
             <ul class="nav bg-info">
             <li class="nav-item">
-                <a class="nav-link link-light" href="/ARapp">HOME</a>
+                {% comment %} potrebuje url appName:name z urlpatters z urls.py {% endcomment %}
+                <a class="nav-link link-light" href="{% url 'ARapp:index' %}">INDEX</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link link-light" href="/ARapp/users">users</a>
+                {% comment %} <a class="nav-link link-light" href="/users">users</a> {% endcomment %}
+                <a class="nav-link link-light" href="{% url 'ARapp:all_users' %}">users</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link link-light" href="/ARapp/about">about</a>
+                <a class="nav-link link-light" href="{% url 'ARapp:about' %}">about</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="{% url 'ARapp:systems' %}">systems</a>
                 </li>
             </ul>
         </div>

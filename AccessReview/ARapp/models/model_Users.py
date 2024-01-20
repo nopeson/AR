@@ -1,5 +1,7 @@
 from django.db import models
 import datetime
+import django_tables2 as tables
+
 from .model_UserStatusType import UserStatus, UserType
 
 
@@ -23,3 +25,10 @@ class Users(models.Model):
     def __str__(self):
         """Returns a string representation of a message."""
         return self.employee_ID
+    
+
+class UsersTable(tables.Table):
+    class Meta:
+        model = Users
+        template_name = "django_tables2/bootstrap.html"
+        fields = ("employee_ID", "name", "userStatus.status", "userType.userType", )
