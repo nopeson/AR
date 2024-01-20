@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ARapp.apps.ArappConfig',
     'bootstrap5',
+    'django_tables2',
 ]
 
 MIDDLEWARE = [
