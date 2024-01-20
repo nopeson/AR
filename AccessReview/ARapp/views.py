@@ -10,6 +10,7 @@ import django_tables2 as tables
 from .models import Users, UsersTable
 from .models import Systems, SystemsTable
 from .models import Country, CountryTable
+from .models import R_ReviewList, ReviewListTable, ReviewListForm
 # Create your views here.
 
 
@@ -28,10 +29,18 @@ def temp_review(request):
             'system': request.POST["systemID"]
         }
     return render(request, "ARapp/temp_review.html", dict)
-# def systems(request):
-#     all_systems = Systems.objects.all()
-#     context = {"all_systems" : all_systems}
-#     return render(request, "ARapp/systems.html", context)
+
+def ReviewListAdd(request):
+    context = {}
+    context['add_new_review_form'] = ReviewListForm()
+    return render(request, "ARapp/temp_reviewList_add.html", context)
+
+
+def ReviewListSubmit(request):
+    if request.method == 'POST':
+        d = ReviewListForm(request.POST)
+        d.save()
+    return render(request, "ARapp/index.html")
             
 
 class UsersListView(tables.SingleTableView):
@@ -47,6 +56,13 @@ class SystemsListView(tables.SingleTableView):
     context_object_name = "all_systems"
     template_name = "ARapp/systems.html"
 
+class ReviewListListView(tables.SingleTableView):
+    model = R_ReviewList
+    table_class = SystemsTable
+    context_object_name = "reviewListList"
+    template_name = "ARapp/reviewList.html"
+    
+
     ##TODO throughput tabulka - systems_country - read from that (maybe)
 
     # print(model.country.countryName)
@@ -58,12 +74,6 @@ class SystemsListView(tables.SingleTableView):
 class SystemDetailView(generic.DetailView):
     model = Systems
     context_object_name = "system"
-    # system_countries = Systems.objects.filter(systemName__iexact="Ledger")
-    # context = {
-    #     "systems_country_list":system_countries,
-    # }
-    # print(system_countries)
-
     #by defualt uses template_name = "ARapp/Systems_detail.html"
 
 
@@ -72,10 +82,3 @@ class CountryListView(tables.SingleTableView):
     table_class = CountryTable
     context_object_name = "countries_for_system"
     template_name = "ARapp/systems_countries.html"
-
-
-""" 
-class ResultsView(generic.DetailView):
-    model = Users
-    template_name = "ARapp/results.html"
- """
