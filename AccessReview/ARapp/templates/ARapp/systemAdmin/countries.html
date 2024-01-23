@@ -1,0 +1,16 @@
+{% extends "ARapp/layout.html" %}
+{% load django_tables2 %}
+
+
+{% block title %}
+    Countries 
+{% endblock title %}
+
+
+{% block body_content%}
+    {% if all_countries %}
+            {% render_table all_countries %}
+    {% else %}
+        <p>No systems have been logged.</p>
+    {% endif %}
+{% endblock body_content%}

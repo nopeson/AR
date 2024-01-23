@@ -32,8 +32,21 @@
                     <a class="nav-link link-light" href="{% url 'ARapp:reviewListAdd' %}">reviewListADD</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link link-light" href="{% url 'ARapp:countries' %}">countries</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link link-light" href="{% url 'ARapp:about' %}">about</a>
                 </li>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      SystemAdmin
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="{% url 'ARapp:reviewListAdd' %}">reviewListADD</a></li>
+                      <li><a class="dropdown-item" href="{% url 'ARapp:countries' %}">countries</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
             </ul>
         </div>
 

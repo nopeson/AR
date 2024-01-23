@@ -1,0 +1,17 @@
+{% extends "ARapp/layout.html" %}
+{% load django_tables2 %}
+
+
+{% block title %}
+    country ADD
+{% endblock title %}
+
+
+{% block body_content%}
+    <form action="" method="post">
+        {% csrf_token%}
+        {{ add_new_coutry_form }}
+        <input type="submit" value="Submit"> 
+    </form> 
+
+{% endblock body_content%}

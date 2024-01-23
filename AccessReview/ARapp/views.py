@@ -9,8 +9,9 @@ import django_tables2 as tables
 
 from .models import Users, UsersTable
 from .models import Systems, SystemsTable
-from .models import Country, CountryTable
+from .models import Country, CountryTable, CountryAddForm
 from .models import R_ReviewList, ReviewListTable, ReviewListForm
+from .urls import *
 # Create your views here.
 
 
@@ -33,7 +34,7 @@ def temp_review(request):
 def ReviewListAdd(request):
     context = {}
     context['add_new_review_form'] = ReviewListForm()
-    return render(request, "ARapp/temp_reviewList_add.html", context)
+    return render(request, "ARapp/systemAdmin/reviewList_add.html", context)
 
 
 def ReviewListSubmit(request):
@@ -41,7 +42,11 @@ def ReviewListSubmit(request):
         d = ReviewListForm(request.POST)
         d.save()
     return render(request, "ARapp/index.html")
-            
+
+def CountryAdd(request):
+    context = {}
+    context['add_new_coutry_form'] = CountryAddForm()
+    return render(request, "ARapp/country_add.html", context)            
 
 class UsersListView(tables.SingleTableView):
     model = Users
@@ -56,20 +61,19 @@ class SystemsListView(tables.SingleTableView):
     context_object_name = "all_systems"
     template_name = "ARapp/systems.html"
 
+class CountriesListView(tables.SingleTableView):
+    model = Country
+    table_class = SystemsTable
+    context_object_name = "all_countries"
+    template_name = "ARapp/systemAdmin/countries.html"    
+ 
+
 class ReviewListListView(tables.SingleTableView):
     model = R_ReviewList
     table_class = SystemsTable
     context_object_name = "reviewListList"
     template_name = "ARapp/reviewList.html"
     
-
-    ##TODO throughput tabulka - systems_country - read from that (maybe)
-
-    # print(model.country.countryName)
-    # print("aaa")
-    # def get_queryset(self):
-    #     """Return distinct systems"""
-    #     return Systems.objects.all().values('systemName').distinct()
 
 class SystemDetailView(generic.DetailView):
     model = Systems

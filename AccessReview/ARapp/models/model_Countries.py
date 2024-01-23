@@ -1,5 +1,6 @@
 from django.db import models
 import django_tables2 as tables
+from django import forms
 import datetime
 
 
@@ -26,6 +27,12 @@ class CountryTable(tables.Table):
     #                                 <a href="/schedule/delete_schedule/{{ record.id }}" 
     #                                     onclick="return confirm('Are you sure you want to delete this?')">on click test</a>''')
     
+
+class CountryAddForm(forms.ModelForm):
+    class Meta:
+        model = Country
+        fields = "__all__"
+        # fields = ("countryName", "isLive")
 
 
 #Table Countries{
